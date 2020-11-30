@@ -1,7 +1,7 @@
-import bpy  #importing blender info
+import bpy  #importing blender info.
+import os   #importing operating system information.
 
-print("Hello World") 
-
+print("Hello World \r\n") 
 x = 9
 
 for obj in bpy.data.objects:
@@ -9,9 +9,15 @@ for obj in bpy.data.objects:
     obj.location = [ x, 0, 0]
     x = x + 5    
 
-def add cube (position, rotation, scale):
+def add_cube(position, rotation, scale):
     bpy.ops.mesh.primitive_cube_add()       #Adds cube to the blender scene.
-    cube = bpy.context.selected_objects[0]  #Extracts first object.
-    cube.name = "Ryan"                      #Name of object.
-    cube.scale = [10, 10, 0.1]              #Scale of object.
+    rtn = bpy.context.selected_objects[0]  #Extracts first object.
+    rtn.name = "Ryan"                      #Name of object.
+    rtn.location = position
+    rtn.scale = scale            #Scale of object.
+    return rtn
 
+
+
+for env in os.environ:
+    print(env)
